@@ -6,8 +6,8 @@ public class ParentMenu {
     private final KidDAO kidDAO;
     private final SharedInformation sharedInformation;
 
-    public ParentMenu(KidDAO kidDAO, SharedInformation sharedInformation) {
-        this.kidDAO = kidDAO;
+    public ParentMenu(SharedInformation sharedInformation) {
+        this.kidDAO = KidDAO.getInstance();
         this.sharedInformation = sharedInformation;
     }
 

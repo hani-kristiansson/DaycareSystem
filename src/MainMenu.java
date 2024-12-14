@@ -3,14 +3,14 @@ import java.util.Scanner;
 
 public class MainMenu {
 
-    private final KidDAO kidDAO = new KidDAO();
+    //private final KidDAO kidDAO = new KidDAO();
     private final TeacherMenu teacherMenu;
     private final ParentMenu parentMenu;
     private final SharedInformation sharedInformation = new SharedInformation();
 
     public MainMenu() throws FileNotFoundException {
-        teacherMenu = new TeacherMenu(kidDAO,sharedInformation);
-        parentMenu = new ParentMenu(kidDAO, sharedInformation);
+        teacherMenu = new TeacherMenu(sharedInformation);
+        parentMenu = new ParentMenu(sharedInformation);
         System.out.println("Welcome to Daycare Rainbow.");
 
         Scanner scanner = new Scanner(System.in);

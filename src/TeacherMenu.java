@@ -5,8 +5,8 @@ public class TeacherMenu {
     private final KidDAO kidDAO;
     private final SharedInformation sharedInformation;
 
-    public TeacherMenu(KidDAO kidDAO, SharedInformation sharedInformation) {
-        this.kidDAO = kidDAO;
+    public TeacherMenu(SharedInformation sharedInformation) {
+        this.kidDAO = KidDAO.getInstance();
         this.sharedInformation = sharedInformation;
     }
 

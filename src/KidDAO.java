@@ -4,10 +4,18 @@ import java.util.List;
 
 public class KidDAO {
 
+    private static KidDAO instance;
     private List<DaycareGroup> daycareGroups = new ArrayList<DaycareGroup>();
     private List<Kid> kids = new ArrayList<>();
 
-    public KidDAO() throws FileNotFoundException {
+    public static KidDAO getInstance() {
+        if (instance == null) {
+            instance = new KidDAO();
+        }
+        return instance;
+    }
+
+    private KidDAO() {
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("src/DaycareGroups"))) {
             String line;
