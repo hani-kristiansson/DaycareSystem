@@ -21,7 +21,7 @@ public class KidDAO {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] groupData = line.split("\\|");
-                if(groupData.length == 2) {
+                if (groupData.length == 2) {
                     DaycareGroup daycareGroup = new DaycareGroup(groupData[0].trim());
                     daycareGroup.setContactInformation(groupData[1].trim());
                     daycareGroups.add(daycareGroup);
@@ -34,7 +34,6 @@ public class KidDAO {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("src/KidsInformation"))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                //System.out.println(line);
                 String[] data = line.split("\\|");
                 String daycareGroupName = data[1].trim();
                 DaycareGroup daycareGroup = findDaycareGroup(daycareGroupName);
@@ -43,15 +42,14 @@ public class KidDAO {
                     daycareGroup = new DaycareGroup(daycareGroupName);
                     daycareGroups.add(daycareGroup);
                 }
-                Kid tempKid = new Kid(data[0], daycareGroup);
+                Kid tempKid = new Kid.Builder()
+                        .nameOfKid(data[0].trim())
+                        .daycareGroup(daycareGroup)
+                        .daycareSchedule(data[2].split(","))
+                        .contactInformation(data.length > 3 ? data[3].trim() : "")
+                        .build();
                 daycareGroup.addKidToDaycareGroup(tempKid);
-                String[] dayCareSchedule = data[2].split(",");
-                for (String daySchedule : dayCareSchedule) {
-                    tempKid.updateDaycareSchedule(daySchedule);
-                }
-                if(data.length > 3) {
-                    tempKid.setContactInformation(data[3]);
-                }
+
                 kids.add(tempKid);
             }
             saveDayCareGroupToFile();
@@ -110,7 +108,7 @@ public class KidDAO {
         saveKidInformationToFile();
     }
 
-    public void removeKid(Kid kid){
+    public void removeKid(Kid kid) {
         kids.remove(kid);
         saveKidInformationToFile();
         DaycareGroup daycareGroup = kid.getKidDaycareGroup();

@@ -13,6 +13,13 @@ public class Kid {
         this.kidDaycareGroup = kidDaycareGroup;
     }
 
+    protected Kid(String nameOfKid, DaycareGroup daycareGroup, String[] daycareSchedule, String contactInformation) {
+        this.kidName = nameOfKid;
+        this.daycareSchedule = daycareSchedule;
+        this.contactInformation = contactInformation;
+        this.kidDaycareGroup = daycareGroup;
+    }
+
     public void setKidName(String kidName) {
         this.kidName = kidName;
     }
@@ -97,8 +104,69 @@ public class Kid {
 
     public void display() {
         System.out.println("----------------------");
-        System.out.println("Student name "+kidName);
+        System.out.println("Student name " + kidName);
         System.out.println("Student contact information " + contactInformation);
         System.out.println("Student schedule " + String.join(", ", daycareSchedule));
+    }
+
+    public static class Builder {
+        String nameOfKid;
+        DaycareGroup daycareGroup;
+        String[] daycareSchedule;
+        String contactInformation;
+
+        public Builder() {
+
+        }
+
+        public Builder nameOfKid(String nameOfKid) {
+            this.nameOfKid = nameOfKid;
+            return this;
+        }
+
+        public Builder daycareGroup(DaycareGroup daycareGroup) {
+            this.daycareGroup = daycareGroup;
+            return this;
+        }
+
+        public Builder daycareSchedule(String[] daycareSchedule) {
+
+            this.daycareSchedule = new String[5];
+
+            for (String daySchedule : daycareSchedule) {
+                String[] dayAndTime = daySchedule.trim().split(" ");
+
+                switch (dayAndTime[0].trim()) {
+                    case "Mon":
+                        this.daycareSchedule[0] = daySchedule.trim();
+                        break;
+                    case "Tue":
+                        this.daycareSchedule[1] = daySchedule.trim();
+                        break;
+                    case "Wed":
+                        this.daycareSchedule[2] = daySchedule.trim();
+                        break;
+                    case "Thu":
+                        this.daycareSchedule[3] = daySchedule.trim();
+                        break;
+                    case "Fri":
+                        this.daycareSchedule[4] = daySchedule.trim();
+                        break;
+                    default:
+                        System.out.println("Invalid day format");
+                        break;
+                }
+            }
+            return this;
+        }
+
+        public Builder contactInformation(String contactInformation) {
+            this.contactInformation = contactInformation;
+            return this;
+        }
+
+        public Kid build() {
+            return new Kid(nameOfKid, daycareGroup, daycareSchedule, contactInformation);
+        }
     }
 }

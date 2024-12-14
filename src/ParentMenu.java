@@ -43,6 +43,7 @@ public class ParentMenu {
                     3. report absence
                     4. see contact info
                     5. go back to previous menu
+                    6. finish program
                     """);
             if (scanner.hasNextInt()) {
                 int option = scanner.nextInt();
@@ -50,39 +51,41 @@ public class ParentMenu {
                 if (option == 1) {
                     System.out.println("You have chosen 'Message from Daycare'");
                     displayMessageForParents(kid);
-                }
-                else if (option == 2) {
+                } else if (option == 2) {
                     System.out.println("You have chosen 'update schedule'. Choose a day you want to update");
                     updateSchedule(kid);
-                }
-                else if (option == 3) {
+                } else if (option == 3) {
                     System.out.println("You have chosen 'report absence'. Choose a day you want to report");
                     updateAbsence(kid);
-                }
-                else if (option == 4) {
+                } else if (option == 4) {
                     System.out.println("You have chosen 'see contact info'.Type Daycare Group to see contact information");
                     showContactInfoOfDaycareGroup(kid);
                 } else if (option == 5) {
                     System.out.println("Logging out as parent");
                     break;
+                } else if (option == 6) {
+                    System.out.println("closing down program");
+                    System.exit(0);
+                } else {
+                    System.out.println("Invalid option");
                 }
             }
         }
     }
 
-    private void displayMessageForParents(Kid kid){
-        if(sharedInformation.getMessageToAllParents() != null){
+    private void displayMessageForParents(Kid kid) {
+        if (sharedInformation.getMessageToAllParents() != null) {
             System.out.println("\nMessage for all parents from the teachers: \n");
             System.out.println(sharedInformation.getMessageToAllParents());
             System.out.println("-------------------------------------\n\n");
         }
-        if(kid.getKidDaycareGroup().getGroupMessage()!= null){
-            System.out.println("\nMessage for daycare group "+kid.getKidDaycareGroup().getDaycareGroupName()+"\n");
+        if (kid.getKidDaycareGroup().getGroupMessage() != null) {
+            System.out.println("\nMessage for daycare group " + kid.getKidDaycareGroup().getDaycareGroupName() + "\n");
             System.out.println(kid.getKidDaycareGroup().getGroupMessage());
             System.out.println("-------------------------------------\n\n");
         }
-        if(kid.getMessageFromDaycare() != null){
-            System.out.println("\nMessage for kid "+kid.getKidName()+"\n");
+        if (kid.getMessageFromDaycare() != null) {
+            System.out.println("\nMessage for kid " + kid.getKidName() + "\n");
             System.out.println(kid.getMessageFromDaycare());
             System.out.println("-------------------------------------\n\n");
         }
@@ -154,6 +157,6 @@ public class ParentMenu {
 
     public void showContactInfoOfDaycareGroup(Kid kid) {
         System.out.println("Contact information for student daycare group");
-        System.out.println(kid.getKidDaycareGroup().getContactInformation()+"\n\n");
+        System.out.println(kid.getKidDaycareGroup().getContactInformation() + "\n\n");
     }
 }

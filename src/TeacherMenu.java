@@ -27,6 +27,7 @@ public class TeacherMenu {
             12. List all students
             13. Create new daycare group
             14. Go back to previous menu
+            15. Finish program
             
             """;
 
@@ -71,6 +72,9 @@ public class TeacherMenu {
                     createNewGroup();
                 } else if (choice == 14) {
                     break;
+                } else if (choice == 15) {
+                    System.out.println("closing down program");
+                    System.exit(0);
                 } else {
                     System.out.println("Invalid choice");
                 }
@@ -157,6 +161,7 @@ public class TeacherMenu {
         if (daycareGroupName != null) {
             DaycareGroup daycareGroup = kidDAO.findDaycareGroup(daycareGroupName);
             kid.switchKidsDaycareGroup(daycareGroup);
+            kidDAO.saveKidInformationToFile();
         }
     }
 
