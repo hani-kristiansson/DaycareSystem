@@ -1,7 +1,7 @@
 **Assignment of Object-oriented analysis and design (OOAD)** in Nackademin Java course.
 
 The assignment was to analyze a business case, write the specification, draw a use case diagram and class diagram, and apply two design patterns. 
-I used the Singleton pattern to read files and the Builder pattern. 
+I used the Singleton pattern and Builder pattern. 
 Please note that there is no user interface was used, input and output are handled through the console.
 
 **Overview of program**
