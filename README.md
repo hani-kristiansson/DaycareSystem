@@ -15,8 +15,8 @@ Teachers:
 - Manage children's attendance
 - Manage children's schedules (update drop-off and pick-up times)
 - Add and remove children from the system
-- Create and manage departments
-- Move children between departments
+- Create and manage group
+- Move children between groups
 - Send general, group-specific, and personal information to guardians
 
 Parents:
