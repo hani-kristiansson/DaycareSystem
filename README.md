@@ -6,7 +6,7 @@ Please note that there is no user interface was used, input and output are handl
 
 **Overview of program**
 Rainbow Preschool needs an app to make it easier for teachers and parents to manage children's attendance and schedules. The app should also streamline communication between them.
-Daycare System is a platform developed for Rainbow Preschool. The principal has requested an app that both teachers and parents can use. The idea is inspired by the app "Prion," which is widely used by parents today in Sweden.
+Daycare System is a platform developed for Rainbow Preschool. Assume that the principal has requested an app that both teachers and parents can use. The idea is inspired by the app "Prion," which is widely used by parents today in Sweden.
 
 Teachers:
 
