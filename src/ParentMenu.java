@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.util.Scanner;
 
-public class ParentMenu {
+public class ParentMenu implements IParentMenu {
 
     private final KidDAO kidDAO;
     private final SharedInformation sharedInformation;
@@ -11,6 +11,7 @@ public class ParentMenu {
         this.sharedInformation = sharedInformation;
     }
 
+    @Override
     public void chooseMenuForParent() {
         Scanner scanner = new Scanner(System.in);
         String studentName;
@@ -26,6 +27,7 @@ public class ParentMenu {
         }
     }
 
+    @Override
     public void findChildNameForParent(String studentName) {
         Scanner scanner = new Scanner(System.in);
         Kid kid = kidDAO.findKid(studentName);
@@ -91,6 +93,7 @@ public class ParentMenu {
         }
     }
 
+    @Override
     public void updateSchedule(Kid kid) {
         Scanner scanner = new Scanner(System.in);
 
@@ -124,6 +127,7 @@ public class ParentMenu {
         }
     }
 
+    @Override
     public void updateAbsence(Kid kid) {
         Scanner scanner = new Scanner(System.in);
         String absence = "absence";
@@ -155,6 +159,7 @@ public class ParentMenu {
         }
     }
 
+    @Override
     public void showContactInfoOfDaycareGroup(Kid kid) {
         System.out.println("Contact information for student daycare group");
         System.out.println(kid.getKidDaycareGroup().getContactInformation() + "\n\n");

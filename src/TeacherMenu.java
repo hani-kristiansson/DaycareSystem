@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.Scanner;
 
-public class TeacherMenu {
+public class TeacherMenu implements ITeacherMenu {
     private final KidDAO kidDAO;
     private final SharedInformation sharedInformation;
 
@@ -31,6 +31,7 @@ public class TeacherMenu {
             
             """;
 
+    @Override
     public void chooseMenuForTeacher() {
         Scanner scanner = new Scanner(System.in);
         int choice;
@@ -91,6 +92,7 @@ public class TeacherMenu {
         }
     }
 
+    @Override
     public Kid findChildNameForTeacher() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the name of the student");
@@ -109,6 +111,7 @@ public class TeacherMenu {
         }
     }
 
+    @Override
     public void listAllStudents() {
         System.out.println("Listing all groups and student. \n");
         List<DaycareGroup> daycareGroupList = kidDAO.getDaycareGroups();
@@ -124,6 +127,7 @@ public class TeacherMenu {
         }
     }
 
+    @Override
     public void addNewStudent() {
         System.out.println("Enter the full name of the new student");
         Scanner scanner = new Scanner(System.in);
@@ -147,6 +151,7 @@ public class TeacherMenu {
         kidDAO.saveNewKid(kid);
     }
 
+    @Override
     public void removeStudent() {
         Kid kid = findChildNameForTeacher();
         if (kid != null) {
@@ -154,6 +159,7 @@ public class TeacherMenu {
         }
     }
 
+    @Override
     public void moveStudentToOtherGroup(Kid kid) {
         System.out.println("Please write which daycare group you want to move the student");
         Scanner scanner = new Scanner(System.in);
@@ -165,6 +171,7 @@ public class TeacherMenu {
         }
     }
 
+    @Override
     public void sendMessageToAllParents() {
         System.out.println("Please write message to share to all parents");
         Scanner scanner = new Scanner(System.in);
@@ -175,6 +182,7 @@ public class TeacherMenu {
         }
     }
 
+    @Override
     public void sendMessageToOneDaycareGroup() {
         System.out.println("Please write which daycare group you want to send message");
         Scanner scanner = new Scanner(System.in);
@@ -192,6 +200,7 @@ public class TeacherMenu {
         }
     }
 
+    @Override
     public void updateContactInformationDaycareGroup() {
         System.out.println("Please write which daycare group you want to update contact details");
         Scanner scanner = new Scanner(System.in);
@@ -210,6 +219,7 @@ public class TeacherMenu {
         }
     }
 
+    @Override
     public void sendMessageToOneParent() {
         Scanner scanner = new Scanner(System.in);
         Kid kid = findChildNameForTeacher();
@@ -223,6 +233,7 @@ public class TeacherMenu {
 
     }
 
+    @Override
     public void updateStudentContactInformation() {
         Scanner scanner = new Scanner(System.in);
         Kid kid = findChildNameForTeacher();
@@ -236,6 +247,7 @@ public class TeacherMenu {
 
     }
 
+    @Override
     public void updateSchedule(Kid kid) {
         Scanner scanner = new Scanner(System.in);
 
@@ -269,6 +281,7 @@ public class TeacherMenu {
         }
     }
 
+    @Override
     public void updateAbsence(Kid kid) {
         Scanner scanner = new Scanner(System.in);
         String absence = "absence";
@@ -300,6 +313,7 @@ public class TeacherMenu {
         }
     }
 
+    @Override
     public void createNewGroup() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Type a name of new group");

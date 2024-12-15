@@ -4,8 +4,8 @@ import java.util.Scanner;
 public class MainMenu {
 
     //private final KidDAO kidDAO = new KidDAO();
-    private final TeacherMenu teacherMenu;
-    private final ParentMenu parentMenu;
+    private final ITeacherMenu teacherMenu;
+    private final IParentMenu parentMenu;
     private final SharedInformation sharedInformation = new SharedInformation();
 
     public MainMenu() throws FileNotFoundException {
